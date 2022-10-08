@@ -1,0 +1,16 @@
+PODS:
+  - SPAlertController (3.0.1)
+
+DEPENDENCIES:
+  - SPAlertController
+
+SPEC REPOS:
+  https://cdn.cocoapods.org/:
+    - SPAlertController
+
+SPEC CHECKSUMS:
+  SPAlertController: ae6124e93a31f60ef086e749d91506f413c66c79
+
+PODFILE CHECKSUM: 0bec0dfdee6b1d9950f82c6c1f476186fa8bfe3b
+
+COCOAPODS: 1.11.3
