@@ -27,26 +27,7 @@
     [ZYQuickAlertController shareInstance].delegate = delegate;
 }
 
-+ (void)alertWithMessage:(NSString * _Nullable)message cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
-    [self alertWithMessage:message cancelButtonTitle:@"取消" cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
-}
-
-+ (void)alertWithMessage:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
-    [self alertWithMessage:message defaultButtonTitle:@"确定" defaultButtonHandler:defaultButtonHandler presentingViewController:presentingViewController];
-}
-
-+ (void)alertWithMessage:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
-    [self alertWithTitle:@"提示" message:message cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
-}
-
-+ (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
-    [self alertWithTitle:@"提示" message:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler presentingViewController:presentingViewController];
-}
-
-+ (void)alertWithMessage:(NSString * _Nullable)message actionTitles:(NSArray * _Nonnull)actionTitles styles:(NSArray <NSNumber *>* _Nonnull)styles handler:(void (^ __nullable)(int index))handler presentingViewController:(UIViewController * _Nullable)presentingViewController {
-    [self alertWithTitle:@"提示" message:message actionTitles:actionTitles styles:styles handler:handler presentingViewController:presentingViewController];
-}
-
+#pragma mark - AlertWithTitle
 + (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
     [self alertWithTitle:title message:message cancelButtonTitle:@"取消" cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
 }
@@ -83,10 +64,49 @@
     [[ZYQuickAlertController shareInstance].delegate alertControllerWithTitle:title message:message actionTitles:actionTitles styles:styles handler:handler presentingViewController:presentingViewController preferredStyle:UIAlertControllerStyleAlert];
 }
 
+#pragma mark - AlertWithMessage 默认title为"提示"
++ (void)alertWithMessage:(NSString * _Nullable)message cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithMessage:message cancelButtonTitle:@"取消" cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithMessage:message defaultButtonTitle:@"确定" defaultButtonHandler:defaultButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler  cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler  cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message actionTitles:(NSArray * _Nonnull)actionTitles styles:(NSArray <NSNumber *>* _Nonnull)styles handler:(void (^ __nullable)(int index))handler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message actionTitles:actionTitles styles:styles handler:handler presentingViewController:presentingViewController];
+}
+
+#pragma mark - ActionSheet
 + (void)actionSheetWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message actionTitles:(NSArray * _Nonnull)actionTitles styles:(NSArray <NSNumber *>* _Nonnull)styles handler:(void (^ __nullable)(int index))handler presentingViewController:(UIViewController * _Nullable)presentingViewController {
     [[ZYQuickAlertController shareInstance].delegate alertControllerWithTitle:title message:message actionTitles:actionTitles styles:styles handler:handler presentingViewController:presentingViewController preferredStyle:UIAlertControllerStyleActionSheet];
 }
 
+#pragma mark - Other
 - (void)alertControllerWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler  cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController preferredStyle:(UIAlertControllerStyle)preferredStyle {
     if ([ZYQuickAlertController shareInstance].delegate != [ZYQuickAlertController shareInstance] && [[ZYQuickAlertController shareInstance].delegate respondsToSelector:@selector(alertControllerWithTitle:message:defaultButtonTitle:defaultButtonHandler:cancelButtonTitle:cancelButtonHandler:destructiveButtonTitle:destructiveButtonHandler:presentingViewController:preferredStyle:)]) {
         [[ZYQuickAlertController shareInstance].delegate alertControllerWithTitle:title message:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:presentingViewController preferredStyle:preferredStyle];
