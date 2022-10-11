@@ -38,6 +38,6 @@
     
     [ZYQuickAlertController alertWithTitle:@"提示" message:@"我是弹框4" cancelButtonHandler:^{
             NSLog(@"点击了取消按钮");
-    } presentingViewController:self.vc];
+    } presentingViewController:self];
 }
 @end

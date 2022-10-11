@@ -39,7 +39,7 @@
     [ZYQuickAlertController alertWithTitle:title message:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:self];
 }
 
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler  cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler {
+- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler {
     [ZYQuickAlertController alertWithTitle:title message:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:self];
 }
 
@@ -72,11 +72,11 @@
     [ZYQuickAlertController alertWithMessage:message cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:self];
 }
 
-- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler  cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
     [ZYQuickAlertController alertWithMessage:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:self];
 }
 
-- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler  cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
     [ZYQuickAlertController alertWithMessage:message defaultButtonTitle:defaultButtonTitle defaultButtonHandler:defaultButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:self];
 }
 
