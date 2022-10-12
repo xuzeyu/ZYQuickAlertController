@@ -68,7 +68,7 @@
     [ZYQuickAlertController alertWithMessage:message destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler presentingViewController:self];
 }
 
-- (void)alertWithMessage:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler {
+- (void)alertWithMessage:(NSString * _Nullable)message destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler {
     [ZYQuickAlertController alertWithMessage:message destructiveButtonTitle:destructiveButtonTitle destructiveButtonHandler:destructiveButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:self];
 }
 
