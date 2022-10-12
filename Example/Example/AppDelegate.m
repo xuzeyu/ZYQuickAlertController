@@ -50,18 +50,18 @@
         }]];
     }
     
-    if (cancelButtonTitle.length > 0) {
-        [alert addAction:[SPAlertAction actionWithTitle:cancelButtonTitle style:SPAlertActionStyleDefault handler:^(SPAlertAction * _Nonnull action) {
-            if (cancelButtonHandler) {
-                cancelButtonHandler();
-            }
-        }]];
-    }
-    
     if (destructiveButtonTitle.length > 0) {
         [alert addAction:[SPAlertAction actionWithTitle:destructiveButtonTitle style:SPAlertActionStyleDestructive handler:^(SPAlertAction * _Nonnull action) {
             if (destructiveButtonHandler) {
                 destructiveButtonHandler();
+            }
+        }]];
+    }
+    
+    if (cancelButtonTitle.length > 0) {
+        [alert addAction:[SPAlertAction actionWithTitle:cancelButtonTitle style:SPAlertActionStyleCancel handler:^(SPAlertAction * _Nonnull action) {
+            if (cancelButtonHandler) {
+                cancelButtonHandler();
             }
         }]];
     }

@@ -122,18 +122,18 @@
         }]];
     }
     
-    if (cancelButtonTitle.length > 0) {
-        [alert addAction:[UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            if (cancelButtonHandler) {
-                cancelButtonHandler();
-            }
-        }]];
-    }
-    
     if (destructiveButtonTitle.length > 0) {
         [alert addAction:[UIAlertAction actionWithTitle:destructiveButtonTitle style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             if (destructiveButtonHandler) {
                 destructiveButtonHandler();
+            }
+        }]];
+    }
+    
+    if (cancelButtonTitle.length > 0) {
+        [alert addAction:[UIAlertAction actionWithTitle:cancelButtonTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            if (cancelButtonHandler) {
+                cancelButtonHandler();
             }
         }]];
     }
