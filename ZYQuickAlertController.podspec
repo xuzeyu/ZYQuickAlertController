@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "ZYQuickAlertController"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.summary      = "快速调用系统弹框，或者调用自定义的弹框"
 
   # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   # spec.description  = "对JXCategoryView的封装"
 
-  spec.homepage     = "https://github.com/xuzeyu/ZYQuickAlertController.git"
+  spec.homepage     = "https://github.com/xuzeyu/ZYQuickAlertController"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
