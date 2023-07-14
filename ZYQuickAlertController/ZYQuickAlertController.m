@@ -36,6 +36,10 @@
     [self alertWithTitle:title message:message defaultButtonTitle:@"确定" defaultButtonHandler:defaultButtonHandler presentingViewController:presentingViewController];
 }
 
++ (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:title message:message defaultButtonTitle:@"确定" defaultButtonHandler:defaultButtonHandler cancelButtonTitle:@"取消" cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
+}
+
 + (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
     [[ZYQuickAlertController shareInstance].delegate alertControllerWithTitle:title message:message defaultButtonTitle:nil defaultButtonHandler:nil destructiveButtonTitle:nil destructiveButtonHandler:nil cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController preferredStyle:UIAlertControllerStyleAlert];
 }
@@ -66,11 +70,15 @@
 
 #pragma mark - AlertWithMessage 默认title为"提示"
 + (void)alertWithMessage:(NSString * _Nullable)message cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
-    [self alertWithMessage:message cancelButtonTitle:@"取消" cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
+    [self alertWithTitle:@"提示" message:message cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
 }
 
 + (void)alertWithMessage:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
-    [self alertWithMessage:message defaultButtonTitle:@"确定" defaultButtonHandler:defaultButtonHandler presentingViewController:presentingViewController];
+    [self alertWithTitle:@"提示" message:message defaultButtonHandler:defaultButtonHandler presentingViewController:presentingViewController];
+}
+
++ (void)alertWithMessage:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {
+    [self alertWithTitle:@"提示" message:message defaultButtonHandler:defaultButtonHandler cancelButtonHandler:cancelButtonHandler presentingViewController:presentingViewController];
 }
 
 + (void)alertWithMessage:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController {

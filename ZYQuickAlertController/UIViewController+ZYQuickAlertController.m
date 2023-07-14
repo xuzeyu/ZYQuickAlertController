@@ -19,6 +19,10 @@
     [ZYQuickAlertController alertWithTitle:title message:message defaultButtonHandler:defaultButtonHandler presentingViewController:self];
 }
 
+- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler {
+    [ZYQuickAlertController alertWithTitle:title message:message defaultButtonHandler:defaultButtonHandler cancelButtonHandler:cancelButtonHandler presentingViewController:self];
+}
+
 - (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler {
     [ZYQuickAlertController alertWithTitle:title message:message cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler presentingViewController:self];
 }
@@ -54,6 +58,10 @@
 
 - (void)alertWithMessage:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler {
     [ZYQuickAlertController alertWithMessage:message defaultButtonHandler:defaultButtonHandler presentingViewController:self];
+}
+
+- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler {
+    [ZYQuickAlertController alertWithMessage:message defaultButtonHandler:defaultButtonHandler cancelButtonHandler:cancelButtonHandler presentingViewController:self];
 }
 
 - (void)alertWithMessage:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler {
