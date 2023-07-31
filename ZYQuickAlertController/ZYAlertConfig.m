@@ -40,19 +40,19 @@
         self.textFields = [NSMutableArray array];
         self.style = UIAlertControllerStyleAlert;
         
-        _sPresentingViewController = ^ZYQuickAlertConfig * _Nullable(UIViewController * _Nonnull viewController) {
+        _sPresentingViewController = ^ZYQuickAlertConfig * _Nullable(UIViewController * __nullable viewController) {
             StrongSelf;
             strongSelf.presentingViewController = viewController;
             return strongSelf;
         };
         
-        _sTitle = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable title) {
+        _sTitle = ^ZYQuickAlertConfig * _Nullable(NSString * __nullable title) {
             StrongSelf;
             strongSelf.title = title;
             return strongSelf;
         };
         
-        _sMessage = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable message) {
+        _sMessage = ^ZYQuickAlertConfig * _Nullable(NSString * __nullable message) {
             StrongSelf;
             strongSelf.message = message;
             return strongSelf;
@@ -64,7 +64,7 @@
             return strongSelf;
         };
         
-        _addDefaultAction = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable title, ZYQuickAlertActionBackBlock  _Nonnull block) {
+        _addDefaultAction = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable title, ZYQuickAlertActionBackBlock  __nullable block) {
             StrongSelf;
             ZYAlertAction *action = [[ZYAlertAction alloc] init];
             action.style = UIAlertActionStyleDefault;
@@ -74,7 +74,7 @@
             return strongSelf;
         };
         
-        _addDefaultActionHandler = ^ZYQuickAlertConfig * _Nullable(ZYQuickAlertActionBackBlock  _Nonnull block) {
+        _addDefaultActionHandler = ^ZYQuickAlertConfig * _Nullable(ZYQuickAlertActionBackBlock  __nullable block) {
             StrongSelf;
             ZYAlertAction *action = [[ZYAlertAction alloc] init];
             action.style = UIAlertActionStyleDefault;
@@ -84,7 +84,7 @@
             return strongSelf;
         };
         
-        _addCancelAction = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable title, ZYQuickAlertActionBackBlock  _Nonnull block) {
+        _addCancelAction = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable title, ZYQuickAlertActionBackBlock  __nullable block) {
             StrongSelf;
             ZYAlertAction *action = [[ZYAlertAction alloc] init];
             action.style = UIAlertActionStyleCancel;
@@ -94,7 +94,7 @@
             return strongSelf;
         };
         
-        _addCancelActionHandler = ^ZYQuickAlertConfig * _Nullable(ZYQuickAlertActionBackBlock  _Nonnull block) {
+        _addCancelActionHandler = ^ZYQuickAlertConfig * _Nullable(ZYQuickAlertActionBackBlock  __nullable block) {
             StrongSelf;
             ZYAlertAction *action = [[ZYAlertAction alloc] init];
             action.style = UIAlertActionStyleCancel;
@@ -104,7 +104,7 @@
             return strongSelf;
         };
         
-        _addDestructiveAction = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable title, ZYQuickAlertActionBackBlock  _Nonnull block) {
+        _addDestructiveAction = ^ZYQuickAlertConfig * _Nullable(NSString * _Nullable title, ZYQuickAlertActionBackBlock  __nullable block) {
             StrongSelf;
             ZYAlertAction *action = [[ZYAlertAction alloc] init];
             action.style = UIAlertActionStyleDestructive;
@@ -114,7 +114,7 @@
             return strongSelf;
         };
         
-        _addAction = ^ZYQuickAlertConfig * _Nullable(NSInteger style, NSString * _Nullable title, ZYQuickAlertActionBackBlock  _Nonnull block) {
+        _addAction = ^ZYQuickAlertConfig * _Nullable(NSInteger style, NSString * _Nullable title, ZYQuickAlertActionBackBlock  __nullable block) {
             StrongSelf;
             ZYAlertAction *action = [[ZYAlertAction alloc] init];
             action.style = style;

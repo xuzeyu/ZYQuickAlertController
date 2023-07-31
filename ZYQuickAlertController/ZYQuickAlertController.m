@@ -40,7 +40,9 @@
     for (int i = 0; i < config.actions.count; i++) {
         ZYAlertAction *zyAction = config.actions[i];
         [alert addAction:[UIAlertAction actionWithTitle:zyAction.title style:zyAction.style handler:^(UIAlertAction * _Nonnull action) {
-            zyAction.block(config);
+            if (zyAction.block) {
+                zyAction.block(config);
+            }
         }]];
     }
     
