@@ -18,26 +18,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self alertWithTitle:@"提示" message:@"我是弹框1" defaultButtonHandler:^{
-        NSLog(@"点击了确定按钮");
-    }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self test];
+    });
+}
+
+- (void)test {
+//    self.zyAlert.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultActionHandler(^(ZYQuickAlertConfig * _Nonnull config) {
+//        NSLog(@"点击了确定按钮");
+//    }).alert();
     
-    [self alertWithTitle:@"提示" message:@"我是弹框2" cancelButtonTitle:@"取消按钮" cancelButtonHandler:^{
+//    self.zyAlert.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+//        NSLog(@"点击了确定按钮");
+//    }).addCancelAction(@"取消按钮", ^{
+//        NSLog(@"点击了取消按钮");
+//    }).alert();
+  
+    self.zyAlert.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了确定按钮");
+    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
         NSLog(@"点击了取消按钮");
-    } destructiveButtonTitle:@"确定按钮" destructiveButtonHandler:^{
-        NSLog(@"点击了确定按钮");
-    }];
+    }).addTextFieldWithConfigurationHandler(^(UITextField * _Nonnull textField) {
+        textField.text = @"1123";
+    }).alert();
     
-    [self alertWithTitle:@"提示" message:@"我是弹框3" actionTitles:@[@"确定", @"取消"] styles:@[@(UIAlertActionStyleDefault), @(UIAlertActionStyleCancel)] handler:^(int index) {
-        if (index == 0) {
-            NSLog(@"点击了确定按钮");
-        }else {
-            NSLog(@"点击了取消按钮");
-        }
-    }];
-    
-    [ZYQuickAlertController alertWithTitle:@"提示" message:@"我是弹框4" cancelButtonHandler:^{
-            NSLog(@"点击了取消按钮");
-    } presentingViewController:self];
+//    [ZYQuickAlertController alertWithConfig:ZYQuickAlertConfig.new.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+//        NSLog(@"点击了确定按钮");
+//    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+//        NSLog(@"点击了取消按钮");
+//    }).setPresentingViewController(self)];
 }
 @end
