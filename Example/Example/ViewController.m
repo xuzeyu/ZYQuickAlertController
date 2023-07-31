@@ -24,17 +24,18 @@
 }
 
 - (void)test {
-//    self.zyAlert.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultActionHandler(^(ZYQuickAlertConfig * _Nonnull config) {
+//    self.zyAlert.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultActionHandler(^(ZYQuickAlertConfig * _Nonnull config) {
 //        NSLog(@"点击了确定按钮");
 //    }).alert();
     
-//    self.zyAlert.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+//    self.zyAlert.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
 //        NSLog(@"点击了确定按钮");
 //    }).addCancelAction(@"取消按钮", ^{
 //        NSLog(@"点击了取消按钮");
 //    }).alert();
   
-    self.zyAlert.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+    self.zyAlert.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+        
         NSLog(@"点击了确定按钮");
     }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
         NSLog(@"点击了取消按钮");
@@ -42,10 +43,11 @@
         textField.text = @"1123";
     }).alert();
     
-//    [ZYQuickAlertController alertWithConfig:ZYQuickAlertConfig.new.setTitle(@"提示").setMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+//    [ZYQuickAlertController alertWithConfig:ZYQuickAlertConfig.new.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
 //        NSLog(@"点击了确定按钮");
 //    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
 //        NSLog(@"点击了取消按钮");
 //    }).setPresentingViewController(self)];
+    
 }
 @end

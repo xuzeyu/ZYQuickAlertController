@@ -28,26 +28,25 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 @property (nonatomic, strong) NSMutableArray <ZYQuickAlertActionTextFieldBlock > *textFieldBlocks;
 
 //链式快速设置
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^setPresentingViewController)(UIViewController *viewController);
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^setTitle)(NSString * __nullable title);
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^setMessage)(NSString * __nullable message);
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^setAlertStyle)(NSInteger style);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^sPresentingViewController)(UIViewController *viewController);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^sTitle)(NSString * __nullable title);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^sMessage)(NSString * __nullable message);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^sAlertStyle)(NSInteger style);
 
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addDefaultAction)(NSString * __nullable title, ZYQuickAlertActionBackBlock block);
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addDefaultActionHandler)(ZYQuickAlertActionBackBlock block);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addDefaultAction)(NSString * __nullable title, ZYQuickAlertActionBackBlock block);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addDefaultActionHandler)(ZYQuickAlertActionBackBlock block);
 
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addCancelAction)(NSString * __nullable title, ZYQuickAlertActionBackBlock block);
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addCancelActionHandler)(ZYQuickAlertActionBackBlock block);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addCancelAction)(NSString * __nullable title, ZYQuickAlertActionBackBlock block);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addCancelActionHandler)(ZYQuickAlertActionBackBlock block);
 
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addDestructiveAction)(NSString * __nullable title, ZYQuickAlertActionBackBlock block);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addDestructiveAction)(NSString * __nullable title, ZYQuickAlertActionBackBlock block);
 
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addAction)(UIAlertActionStyle style, NSString * __nullable title, ZYQuickAlertActionBackBlock block);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addAction)(UIAlertActionStyle style, NSString * __nullable title, ZYQuickAlertActionBackBlock block);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addActionConfig)(ZYQuickAlertActionBlock);
 
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addActionConfig)(ZYQuickAlertActionBlock);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * __nullable(^addTextFieldWithConfigurationHandler)(ZYQuickAlertActionTextFieldBlock block);
 
-@property (nonatomic, copy) ZYQuickAlertConfig * __nullable(^addTextFieldWithConfigurationHandler)(ZYQuickAlertActionTextFieldBlock block);
-
-@property (nonatomic, copy) void (^alert)(void);
+@property (nonatomic, copy, readonly) void (^alert)(void);
 @end
 
 @interface ZYAlertAction : NSObject
