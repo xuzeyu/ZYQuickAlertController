@@ -37,11 +37,14 @@
     
     if (!config.presentingViewController) return;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:config.title message:config.message preferredStyle:config.style];
+    
+    __weak typeof(config) weakConfig = config;
     for (int i = 0; i < config.actions.count; i++) {
         ZYAlertAction *zyAction = config.actions[i];
+        __strong __typeof(config) strongConfig = weakConfig;
         [alert addAction:[UIAlertAction actionWithTitle:zyAction.title style:zyAction.style handler:^(UIAlertAction * _Nonnull action) {
             if (zyAction.block) {
-                zyAction.block(config);
+                zyAction.block(strongConfig);
             }
         }]];
     }
@@ -52,7 +55,6 @@
             config.textFieldBlocks[i](textField);
         }];
     }
-    
     [config.presentingViewController presentViewController:alert animated:YES completion:nil];
 }
 

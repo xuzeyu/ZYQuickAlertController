@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B8D60480D6BBE69494436A41 /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 63A0E306A43878424268A550 /* libPods-Example.a */; };
-		FD623FC02A77B30E00C36109 /* ZYAlertConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FD623FBF2A77B30E00C36109 /* ZYAlertConfig.m */; };
+		FD623FC02A77B30E00C36109 /* ZYQuickAlertConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = FD623FBF2A77B30E00C36109 /* ZYQuickAlertConfig.m */; };
 		FDC4899328B8A34E0077ADAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC4899228B8A34E0077ADAC /* AppDelegate.m */; };
 		FDC4899628B8A34E0077ADAC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC4899528B8A34E0077ADAC /* SceneDelegate.m */; };
 		FDC4899928B8A34E0077ADAC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC4899828B8A34E0077ADAC /* ViewController.m */; };
@@ -44,8 +44,8 @@
 		414ABE89E7BA93533CB68559 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		4E6E653A0AF812A3B7867A90 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		63A0E306A43878424268A550 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FD623FBE2A77B30E00C36109 /* ZYAlertConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYAlertConfig.h; sourceTree = "<group>"; };
-		FD623FBF2A77B30E00C36109 /* ZYAlertConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYAlertConfig.m; sourceTree = "<group>"; };
+		FD623FBE2A77B30E00C36109 /* ZYQuickAlertConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYQuickAlertConfig.h; sourceTree = "<group>"; };
+		FD623FBF2A77B30E00C36109 /* ZYQuickAlertConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYQuickAlertConfig.m; sourceTree = "<group>"; };
 		FDC4898E28B8A34E0077ADAC /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDC4899128B8A34E0077ADAC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FDC4899228B8A34E0077ADAC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -177,8 +177,8 @@
 				FDD3D93728D45A5100F1A247 /* UIViewController+ZYQuickAlertController.m */,
 				FDD3D93928D45A5D00F1A247 /* ZYQuickAlertController.h */,
 				FDD3D93A28D45A5D00F1A247 /* ZYQuickAlertController.m */,
-				FD623FBE2A77B30E00C36109 /* ZYAlertConfig.h */,
-				FD623FBF2A77B30E00C36109 /* ZYAlertConfig.m */,
+				FD623FBE2A77B30E00C36109 /* ZYQuickAlertConfig.h */,
+				FD623FBF2A77B30E00C36109 /* ZYQuickAlertConfig.m */,
 			);
 			name = ZYQuickAlertController;
 			path = ../ZYQuickAlertController;
@@ -342,7 +342,7 @@
 			files = (
 				FDC4899928B8A34E0077ADAC /* ViewController.m in Sources */,
 				FDC4899328B8A34E0077ADAC /* AppDelegate.m in Sources */,
-				FD623FC02A77B30E00C36109 /* ZYAlertConfig.m in Sources */,
+				FD623FC02A77B30E00C36109 /* ZYQuickAlertConfig.m in Sources */,
 				FDC489A428B8A34F0077ADAC /* main.m in Sources */,
 				FDD3D93B28D45A5D00F1A247 /* ZYQuickAlertController.m in Sources */,
 				FDD3D93828D45A5100F1A247 /* UIViewController+ZYQuickAlertController.m in Sources */,

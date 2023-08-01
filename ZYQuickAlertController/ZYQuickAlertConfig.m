@@ -1,15 +1,31 @@
 //
-//  ZYAlertConfig.m
+//  ZYQuickAlertConfig.m
 //  Example
 //
 //  Created by XUZY on 2023/7/31.
 //
 
-#import "ZYAlertConfig.h"
+#import "ZYQuickAlertConfig.h"
 #import "ZYQuickAlertController.h"
+#import <objc/runtime.h>
 
 #define WeakSelf __weak __typeof(self)weakSelf = self;
 #define StrongSelf __strong __typeof(weakSelf) strongSelf = weakSelf;
+@interface NSObject (ZYQuickAlertController)
+@property (nonatomic, strong) ZYQuickAlertConfig *config;
+@end
+
+@implementation NSObject (ZYQuickAlertController)
+
+- (ZYQuickAlertConfig *)config {
+    return objc_getAssociatedObject(self, @selector(config));
+}
+
+- (void)setConfig:(ZYQuickAlertConfig *)config {
+    objc_setAssociatedObject(self, @selector(config), config, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+@end
 
 @interface ZYQuickAlertConfig ()
 
@@ -140,9 +156,10 @@
             return strongSelf;
         };
         
-        _alert = ^{
+        _alert = ^ZYQuickAlertConfig *(void){
             StrongSelf;
             [ZYQuickAlertController alertWithConfig:strongSelf];
+            return strongSelf;
         };
     }
     return self;
@@ -153,3 +170,5 @@
 @implementation ZYAlertAction
 
 @end
+
+
