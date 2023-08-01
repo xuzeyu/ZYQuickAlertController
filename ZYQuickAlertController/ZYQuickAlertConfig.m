@@ -165,6 +165,11 @@
     return self;
 }
 
+- (ZYQuickAlertConfig *)sDefTitle {
+    self.title = @"提示";
+    return self;
+}
+
 @end
 
 @implementation ZYAlertAction

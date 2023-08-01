@@ -47,6 +47,8 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^addTextFieldWithConfigurationHandler)(ZYQuickAlertActionTextFieldBlock block);
 
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^alert)(void);
+
+- (ZYQuickAlertConfig *)sDefTitle;
 @end
 
 @interface ZYAlertAction : NSObject

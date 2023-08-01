@@ -33,7 +33,7 @@
 //    }).addCancelAction(@"取消按钮", ^{
 //        NSLog(@"点击了取消按钮");
 //    }).alert();
-    self.zyAlert.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮",^(ZYQuickAlertConfig * _Nonnull config) {
+    self.zyAlert.sDefTitle.sMessage(@"我是弹框1").addDefaultAction(@"确定按钮",^(ZYQuickAlertConfig * _Nonnull config) {
         NSLog(@"点击了确定按钮---%@", config.title);
     }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
         NSLog(@"点击了取消按钮");
