@@ -46,6 +46,5 @@
 //    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
 //        NSLog(@"点击了取消按钮");
 //    }).setPresentingViewController(self)];
-    
 }
 @end

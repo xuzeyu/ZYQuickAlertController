@@ -34,8 +34,11 @@
 @implementation ZYQuickAlertConfig
 @synthesize sPresentingViewController=_sPresentingViewController;
 @synthesize sTitle=_sTitle;
+@synthesize sTitleAttributedString=_sTitleAttributedString;
 @synthesize sMessage=_sMessage;
+@synthesize sMessageAttributedString=_sMessageAttributedString;
 @synthesize sAlertStyle=_sAlertStyle;
+@synthesize sMessageTextAlignment = _sMessageTextAlignment;
 @synthesize addDefaultAction=_addDefaultAction;
 @synthesize addDefaultActionHandler=_addDefaultActionHandler;
 @synthesize addCancelAction=_addCancelAction;
@@ -45,7 +48,7 @@
 @synthesize addActionConfig=_addActionConfig;
 @synthesize addTextFieldWithConfigurationHandler=_addTextFieldWithConfigurationHandler;
 @synthesize alert=_alert;
-@synthesize sMessageTextAlignment = _sMessageTextAlignment;
+
 
 - (instancetype)init
 {
@@ -69,11 +72,23 @@
             return strongSelf;
         };
         
+        _sTitleAttributedString = ^ZYQuickAlertConfig * _Nullable(NSAttributedString * __nullable titleAttributedString) {
+            StrongSelf;
+            strongSelf.titleAttributedString = titleAttributedString;
+            return strongSelf;
+        };
+        
         _sMessage = ^ZYQuickAlertConfig * _Nullable(NSString * __nullable message) {
             StrongSelf;
             strongSelf.message = message;
             return strongSelf;
         };
+        
+        _sMessageAttributedString = ^ZYQuickAlertConfig * _Nullable(NSAttributedString * __nullable messageAttributedString) {
+            StrongSelf;
+            strongSelf.messageAttributedString = messageAttributedString;
+            return strongSelf;
+        }.
         
         _sAlertStyle = ^ZYQuickAlertConfig * _Nullable(NSInteger style) {
             StrongSelf;

@@ -28,7 +28,9 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 @property (nonatomic, strong) UIViewController *presentingViewController;
 @property (nonatomic, assign) ZYQuickAlertType type; //弹框类型，初始为默认弹框
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSAttributedString *titleAttributedString;
 @property (nonatomic, copy) NSString *message;
+@property (nonatomic, copy) NSAttributedString *messageAttributedString;
 @property (nonatomic, assign) NSInteger style;
 @property (nonatomic, strong) NSMutableArray <ZYAlertAction *> *actions;
 @property (nonatomic, strong) NSMutableArray <UITextField *> *textFields;
@@ -38,7 +40,9 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 //链式快速设置
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sPresentingViewController)(UIViewController *viewController);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitle)(NSString * __nullable title);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitleAttributedString)(NSAttributedString * __nullable titleAttributedString);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessage)(NSString * __nullable message);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessageAttributedString)(NSAttributedString * __nullable messageAttributedString);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sAlertStyle)(NSInteger style);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessageTextAlignment)(NSTextAlignment messageTextAlignment);
 
