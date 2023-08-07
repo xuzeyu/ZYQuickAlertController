@@ -28,20 +28,28 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 @property (nonatomic, strong) UIViewController *presentingViewController;
 @property (nonatomic, assign) ZYQuickAlertType type; //弹框类型，初始为默认弹框
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSAttributedString *titleAttributedString;
+@property (nonatomic, strong) UIFont *titleFont;
+@property (nonatomic, strong) UIColor *titleColor;
+@property (nonatomic, strong) NSAttributedString *titleAttributedString;
 @property (nonatomic, copy) NSString *message;
-@property (nonatomic, copy) NSAttributedString *messageAttributedString;
+@property (nonatomic, strong) UIFont *messageFont;
+@property (nonatomic, strong) UIColor *messageColor;
+@property (nonatomic, strong) NSAttributedString *messageAttributedString;
 @property (nonatomic, assign) NSInteger style;
 @property (nonatomic, strong) NSMutableArray <ZYAlertAction *> *actions;
 @property (nonatomic, strong) NSMutableArray <UITextField *> *textFields;
 @property (nonatomic, strong) NSMutableArray <ZYQuickAlertActionTextFieldBlock > *textFieldBlocks;
-@property (nonatomic, assign) NSTextAlignment messageTextAlignment; //原生不支持
+@property (nonatomic, assign) NSTextAlignment messageTextAlignment;
 
 //链式快速设置
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sPresentingViewController)(UIViewController *viewController);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitle)(NSString * __nullable title);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitleFont)(UIFont * __nullable titleFont);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitleColor)(UIColor * __nullable titleColor);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitleAttributedString)(NSAttributedString * __nullable titleAttributedString);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessage)(NSString * __nullable message);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessageFont)(UIFont * __nullable messageFont);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessageColor)(UIColor * __nullable messageColor);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessageAttributedString)(NSAttributedString * __nullable messageAttributedString);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sAlertStyle)(NSInteger style);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMessageTextAlignment)(NSTextAlignment messageTextAlignment);

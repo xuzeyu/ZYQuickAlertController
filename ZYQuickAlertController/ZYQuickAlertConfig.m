@@ -34,8 +34,12 @@
 @implementation ZYQuickAlertConfig
 @synthesize sPresentingViewController=_sPresentingViewController;
 @synthesize sTitle=_sTitle;
+@synthesize sTitleFont=_sTitleFont;
+@synthesize sTitleColor=_sTitleColor;
 @synthesize sTitleAttributedString=_sTitleAttributedString;
 @synthesize sMessage=_sMessage;
+@synthesize sMessageFont=_sMessageFont;
+@synthesize sMessageColor=_sMessageColor;
 @synthesize sMessageAttributedString=_sMessageAttributedString;
 @synthesize sAlertStyle=_sAlertStyle;
 @synthesize sMessageTextAlignment = _sMessageTextAlignment;
@@ -72,6 +76,18 @@
             return strongSelf;
         };
         
+        _sTitleFont = ^ZYQuickAlertConfig * _Nullable(UIFont * __nullable titleFont) {
+            StrongSelf;
+            strongSelf.titleFont = titleFont;
+            return strongSelf;
+        };
+        
+        _sTitleColor = ^ZYQuickAlertConfig * _Nullable(UIColor * __nullable titleColor) {
+            StrongSelf;
+            strongSelf.titleColor = titleColor;
+            return strongSelf;
+        };
+        
         _sTitleAttributedString = ^ZYQuickAlertConfig * _Nullable(NSAttributedString * __nullable titleAttributedString) {
             StrongSelf;
             strongSelf.titleAttributedString = titleAttributedString;
@@ -84,11 +100,23 @@
             return strongSelf;
         };
         
+        _sMessageFont = ^ZYQuickAlertConfig * _Nullable(UIFont * __nullable messageFont) {
+            StrongSelf;
+            strongSelf.messageFont = messageFont;
+            return strongSelf;
+        };
+        
+        _sMessageColor = ^ZYQuickAlertConfig * _Nullable(UIColor * __nullable messageColor) {
+            StrongSelf;
+            strongSelf.messageColor = messageColor;
+            return strongSelf;
+        };
+        
         _sMessageAttributedString = ^ZYQuickAlertConfig * _Nullable(NSAttributedString * __nullable messageAttributedString) {
             StrongSelf;
             strongSelf.messageAttributedString = messageAttributedString;
             return strongSelf;
-        }.
+        };
         
         _sAlertStyle = ^ZYQuickAlertConfig * _Nullable(NSInteger style) {
             StrongSelf;

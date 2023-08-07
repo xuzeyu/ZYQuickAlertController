@@ -54,9 +54,13 @@
             }
         }]];
     }
-    alert.textAlignment = config.messageTextAlignment;
-    alert.attributedTitle = config.titleAttributedString;
-    alert.attributedMessage = config.messageAttributedString;
+    if (config.messageTextAlignment) alert.textAlignment = config.messageTextAlignment;
+    if (config.titleAttributedString) alert.attributedTitle = config.titleAttributedString;
+    if (config.messageAttributedString) alert.attributedMessage = config.messageAttributedString;
+    alert.titleFont = config.titleFont ? config.titleFont : alert.titleFont;
+    alert.titleColor = config.titleColor ? config.titleColor : alert.titleColor;
+    alert.messageFont = config.messageFont ? config.messageFont : alert.messageFont;
+    alert.messageColor = config.messageColor ? config.messageColor : alert.messageColor;
     
     for (int i = 0; i < config.textFieldBlocks.count; i++) {
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
