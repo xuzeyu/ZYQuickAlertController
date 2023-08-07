@@ -26,7 +26,8 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 
 @interface ZYQuickAlertConfig : NSObject
 @property (nonatomic, strong) UIViewController *presentingViewController;
-@property (nonatomic, assign) ZYQuickAlertType type; //弹框类型，初始为默认弹框
+@property (nonatomic, assign) ZYQuickAlertType type; ///<弹框类型，初始为默认弹框
+@property(nonatomic, assign) CGFloat minDistanceToEdges;///<距离屏幕边缘的最小间距
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, strong) UIFont *titleFont;
 @property (nonatomic, strong) UIColor *titleColor;
@@ -43,6 +44,7 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 
 //链式快速设置
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sPresentingViewController)(UIViewController *viewController);
+@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sMinDistanceToEdges)(CGFloat minDistanceToEdges);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitle)(NSString * __nullable title);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitleFont)(UIFont * __nullable titleFont);
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^sTitleColor)(UIColor * __nullable titleColor);

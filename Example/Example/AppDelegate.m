@@ -61,6 +61,7 @@
     alert.titleColor = config.titleColor ? config.titleColor : alert.titleColor;
     alert.messageFont = config.messageFont ? config.messageFont : alert.messageFont;
     alert.messageColor = config.messageColor ? config.messageColor : alert.messageColor;
+    if (config.minDistanceToEdges > 0) alert.minDistanceToEdges = config.minDistanceToEdges;
     
     for (int i = 0; i < config.textFieldBlocks.count; i++) {
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {

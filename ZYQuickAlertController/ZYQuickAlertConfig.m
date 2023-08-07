@@ -33,6 +33,7 @@
 
 @implementation ZYQuickAlertConfig
 @synthesize sPresentingViewController=_sPresentingViewController;
+@synthesize sMinDistanceToEdges=_sMinDistanceToEdges;
 @synthesize sTitle=_sTitle;
 @synthesize sTitleFont=_sTitleFont;
 @synthesize sTitleColor=_sTitleColor;
@@ -67,6 +68,12 @@
         _sPresentingViewController = ^ZYQuickAlertConfig * _Nullable(UIViewController * __nullable viewController) {
             StrongSelf;
             strongSelf.presentingViewController = viewController;
+            return strongSelf;
+        };
+        
+        _sMinDistanceToEdges = ^ZYQuickAlertConfig * _Nullable(CGFloat minDistanceToEdges) {
+            StrongSelf;
+            strongSelf.minDistanceToEdges = minDistanceToEdges;
             return strongSelf;
         };
         
