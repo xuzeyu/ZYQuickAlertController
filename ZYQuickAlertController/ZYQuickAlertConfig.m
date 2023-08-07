@@ -45,6 +45,7 @@
 @synthesize addActionConfig=_addActionConfig;
 @synthesize addTextFieldWithConfigurationHandler=_addTextFieldWithConfigurationHandler;
 @synthesize alert=_alert;
+@synthesize sMessageTextAlignment = _sMessageTextAlignment;
 
 - (instancetype)init
 {
@@ -77,6 +78,12 @@
         _sAlertStyle = ^ZYQuickAlertConfig * _Nullable(NSInteger style) {
             StrongSelf;
             strongSelf.style = style;
+            return strongSelf;
+        };
+        
+        _sMessageTextAlignment = ^ZYQuickAlertConfig * _Nullable(NSTextAlignment messageTextAlignment) {
+            StrongSelf;
+            strongSelf.messageTextAlignment = messageTextAlignment;
             return strongSelf;
         };
         

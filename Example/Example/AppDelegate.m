@@ -54,6 +54,7 @@
             }
         }]];
     }
+    alert.textAlignment = config.messageTextAlignment;
     
     for (int i = 0; i < config.textFieldBlocks.count; i++) {
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {

@@ -12,6 +12,14 @@
 
 - (ZYQuickAlertConfig *)zyAlert {
     ZYQuickAlertConfig *config = [[ZYQuickAlertConfig alloc] init];
+    config.type = ZYQuickAlertTypeNative;
+    config.presentingViewController = self;
+    return config;
+}
+
+- (ZYQuickAlertConfig *)zyAlertCustom {
+    ZYQuickAlertConfig *config = [[ZYQuickAlertConfig alloc] init];
+    config.type = ZYQuickAlertTypeCustom;
     config.presentingViewController = self;
     return config;
 }

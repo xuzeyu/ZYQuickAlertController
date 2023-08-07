@@ -28,13 +28,8 @@
 }
 
 #pragma mark - Other
-- (void)alertWithConfig:(ZYQuickAlertConfig *)config {
-    if(!config) return ;
-    if ([ZYQuickAlertController shareInstance].delegate != [ZYQuickAlertController shareInstance] && [[ZYQuickAlertController shareInstance].delegate respondsToSelector:@selector(alertWithConfig:)]) {
-        [[ZYQuickAlertController shareInstance].delegate alertWithConfig:config];
-        return;
-    }
-    
+
+- (void)alertNativeWithConfig:(ZYQuickAlertConfig *)config {
     if (!config.presentingViewController) return;
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:config.title message:config.message preferredStyle:config.style];
     
@@ -58,8 +53,22 @@
     [config.presentingViewController presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)alertWithConfig:(ZYQuickAlertConfig *)config {
+    if(!config) return ;
+
+    if (config.type == ZYQuickAlertTypeNative) {
+        [self alertNativeWithConfig:config];
+    }else if (config.type == ZYQuickAlertTypeCustom) {
+        if ([ZYQuickAlertController shareInstance].delegate != [ZYQuickAlertController shareInstance] && [[ZYQuickAlertController shareInstance].delegate respondsToSelector:@selector(alertWithConfig:)]) {
+            [[ZYQuickAlertController shareInstance].delegate alertWithConfig:config];
+            return;
+        }
+        [self alertNativeWithConfig:config];
+    }
+}
+
 + (void)alertWithConfig:(ZYQuickAlertConfig *)config {
-    [[ZYQuickAlertController shareInstance].delegate alertWithConfig:config];
+    [[ZYQuickAlertController shareInstance] alertWithConfig:config];
 }
 
 @end

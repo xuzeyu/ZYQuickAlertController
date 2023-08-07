@@ -33,13 +33,13 @@
 //    }).addCancelAction(@"取消按钮", ^{
 //        NSLog(@"点击了取消按钮");
 //    }).alert();
-    self.zyAlert.sDefTitle.sMessage(@"我是弹框1").addDefaultAction(@"确定按钮",^(ZYQuickAlertConfig * _Nonnull config) {
+    self.zyAlertCustom.sDefTitle.sMessage(@"我是弹框1").addDefaultAction(@"确定按钮",^(ZYQuickAlertConfig * _Nonnull config) {
         NSLog(@"点击了确定按钮---%@", config.title);
     }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
         NSLog(@"点击了取消按钮");
     }).addTextFieldWithConfigurationHandler(^(UITextField * _Nonnull textField) {
         textField.text = @"1123";
-    }).alert();
+    }).sMessageTextAlignment(NSTextAlignmentLeft).alert();
     
 //    [ZYQuickAlertController alertWithConfig:ZYQuickAlertConfig.new.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
 //        NSLog(@"点击了确定按钮");
