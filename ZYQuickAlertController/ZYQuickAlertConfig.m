@@ -213,10 +213,9 @@
             return strongSelf;
         };
         
-        _alert = ^ZYQuickAlertConfig *(void){
+        _alert = ^{
             StrongSelf;
             [ZYQuickAlertController alertWithConfig:strongSelf];
-            return strongSelf;
         };
     }
     return self;

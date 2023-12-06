@@ -69,7 +69,7 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 
 @property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^addTextFieldWithConfigurationHandler)(ZYQuickAlertActionTextFieldBlock block);
 
-@property (nonatomic, copy, readonly) ZYQuickAlertConfig * (^alert)(void);
+@property (nonatomic, copy, readonly) void (^alert)(void);
 
 - (ZYQuickAlertConfig *)sDefTitle;
 @end
