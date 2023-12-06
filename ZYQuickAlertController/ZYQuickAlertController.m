@@ -35,7 +35,7 @@
     
     __weak typeof(config) weakConfig = config;
     for (int i = 0; i < config.actions.count; i++) {
-        ZYAlertAction *zyAction = config.actions[i];
+        ZYQuickAlertAction *zyAction = config.actions[i];
         __strong __typeof(config) strongConfig = weakConfig;
         [alert addAction:[UIAlertAction actionWithTitle:zyAction.title style:zyAction.style handler:^(UIAlertAction * _Nonnull action) {
             if (zyAction.block) {

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class ZYQuickAlertConfig;
-@class ZYAlertAction;
+@class ZYQuickAlertAction;
 
 //弹框类型
 typedef NS_ENUM(NSUInteger, ZYQuickAlertType) {
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, ZYQuickAlertType) {
 };
 
 typedef void (^ZYQuickAlertActionText)(NSString *text);
-typedef void (^ZYQuickAlertActionBlock)(ZYAlertAction * __nullable action);
+typedef void (^ZYQuickAlertActionBlock)(ZYQuickAlertAction * __nullable action);
 typedef void (^ZYQuickAlertActionBackBlock)(ZYQuickAlertConfig *config);
 typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 
@@ -37,7 +37,7 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 @property (nonatomic, strong) UIColor *messageColor;
 @property (nonatomic, strong) NSAttributedString *messageAttributedString;
 @property (nonatomic, assign) NSInteger style;
-@property (nonatomic, strong) NSMutableArray <ZYAlertAction *> *actions;
+@property (nonatomic, strong) NSMutableArray <ZYQuickAlertAction *> *actions;
 @property (nonatomic, strong) NSMutableArray <UITextField *> *textFields;
 @property (nonatomic, strong) NSMutableArray <ZYQuickAlertActionTextFieldBlock > *textFieldBlocks;
 @property (nonatomic, assign) NSTextAlignment messageTextAlignment;
@@ -74,7 +74,7 @@ typedef void (^ZYQuickAlertActionTextFieldBlock)(UITextField *textField);
 - (ZYQuickAlertConfig *)sDefTitle;
 @end
 
-@interface ZYAlertAction : NSObject
+@interface ZYQuickAlertAction : NSObject
 @property (nonatomic, assign) NSInteger style;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, copy) ZYQuickAlertActionBackBlock block;

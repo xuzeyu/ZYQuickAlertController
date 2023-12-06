@@ -47,7 +47,7 @@
     SPAlertController *alert = [SPAlertController alertControllerWithTitle:config.title message:config.message preferredStyle:config.style];
     __weak typeof(config) weakConfig = config;
     for (int i = 0; i < config.actions.count; i++) {
-        ZYAlertAction *zyAction = config.actions[i];
+        ZYQuickAlertAction *zyAction = config.actions[i];
         [alert addAction:[SPAlertAction actionWithTitle:zyAction.title style:zyAction.style handler:^(SPAlertAction * _Nonnull action) {
             if (zyAction.block) {
                 zyAction.block(weakConfig);
