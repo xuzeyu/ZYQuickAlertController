@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIViewController (ZYQuickAlertController)
 - (ZYQuickAlertConfig *)zyAlert; ///<原生弹框
 - (ZYQuickAlertConfig *)zyAlertCustom;///<自定义弹框
++ (ZYQuickAlertConfig *)zyAlert; ///<原生弹框
++ (ZYQuickAlertConfig *)zyAlertCustom;///<自定义弹框
 @end
 
 NS_ASSUME_NONNULL_END
