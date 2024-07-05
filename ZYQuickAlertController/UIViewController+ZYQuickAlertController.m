@@ -6,7 +6,6 @@
 //
 
 #import "UIViewController+ZYQuickAlertController.h"
-#import "ZYQuickAlertConfig.h"
 
 @implementation UIViewController (ZYQuickAlertController)
 
