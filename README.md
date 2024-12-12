@@ -10,9 +10,6 @@ pod 'ZYQuickAlertController'
 
 ## 如何使用
 ```objc
-#import "ViewController.h"
-#import "UIViewController+ZYQuickAlertController.h"
-
 @interface ViewController ()
 
 @end
@@ -22,30 +19,57 @@ pod 'ZYQuickAlertController'
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self alertWithTitle:@"提示" message:@"我是弹框1" defaultButtonHandler:^{
-        NSLog(@"点击了确定按钮");
-    }];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self test];
+    });
     
-    [self alertWithTitle:@"提示" message:@"我是弹框2" cancelButtonTitle:@"取消按钮" cancelButtonHandler:^{
-        NSLog(@"点击了取消按钮");
-    } destructiveButtonTitle:@"确定按钮" destructiveButtonHandler:^{
-        NSLog(@"点击了确定按钮");
-    }];
-    
-    [self alertWithTitle:@"提示" message:@"我是弹框3" actionTitles:@[@"确定", @"取消"] styles:@[@(UIAlertActionStyleDefault), @(UIAlertActionStyleCancel)] handler:^(int index) {
-        if (index == 0) {
-            NSLog(@"点击了确定按钮");
-        }else {
-            NSLog(@"点击了取消按钮");
-        }
-    }];
 }
-@end
 
-//如果需要在UIView中调用弹框，可以直接调用ZYQuickAlertController
-[ZYQuickAlertController alertWithTitle:@"提示" message:@"我是弹框4" cancelButtonHandler:^{
-    NSLog(@"点击了取消按钮");
-} presentingViewController:self.vc];
+- (void)test {
+    //显示提示标题，显示确定按钮
+    self.zyAlert.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultActionHandler(^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了确定按钮");
+    }).alert();
+    
+    //显示提示标题，显示默认确定按钮，删除按钮，和默认取消按钮
+    self.zyAlert.sDefTitle.sMessage(@"我是弹框1").addDefaultActionHandler(^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了确定按钮");
+    }).addDestructiveAction(@"删除按钮", ^(ZYQuickAlertConfig * _Nonnull config){
+        NSLog(@"点击了删除按钮");
+    }).addCancelActionHandler(nil).alert();
+    
+    //显示提示标题，显示自定义文字确定按钮和自定义文字取消按钮
+    self.zyAlert.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了确定按钮");
+    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config){
+        NSLog(@"点击了取消按钮");
+    }).alert();
+    
+    //设置自定义弹框,自定义弹框需要再appdelegate定义delegate方法
+    self.zyAlertCustom.sDefTitle.sMessage(@"我是弹框1").addDefaultAction(@"确定按钮",^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了确定按钮---%@", config.title);
+    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了取消按钮");
+    }).addTextFieldWithConfigurationHandler(^(UITextField * _Nonnull textField) {
+        textField.text = @"1123";
+    }).sMessageTextAlignment(NSTextAlignmentLeft).alert();
+    
+    //如果需要在UIView中调用弹框，可以直接调用UIViewController
+    UIViewController.zyAlert.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了确定按钮");
+    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config){
+        NSLog(@"点击了取消按钮");
+    }).alert();
+    
+    //如果需要在UIView中调用弹框，也可以直接调用ZYQuickAlertController
+    [ZYQuickAlertController alertWithConfig:ZYQuickAlertConfig.new.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了确定按钮");
+    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
+        NSLog(@"点击了取消按钮");
+    }).sPresentingViewController(self)];
+}
+
+@end
 
 //如果需要调用自定义的其他弹框，则需要AppDelegate中增加以下代码
 #import "ZYQuickAlertController.h"
@@ -57,58 +81,40 @@ pod 'ZYQuickAlertController'
 
 //此处以SPAlertController为例
 #pragma mark - ZYQuickAlertControllerDelegate
-- (void)alertControllerWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler presentingViewController:(UIViewController * _Nullable)presentingViewController preferredStyle:(UIAlertControllerStyle)preferredStyle {
-    SPAlertController *alert = [SPAlertController alertControllerWithTitle:title message:message preferredStyle:(SPAlertControllerStyle)preferredStyle];
-    if (defaultButtonTitle.length > 0) {
-        [alert addAction:[SPAlertAction actionWithTitle:defaultButtonTitle style:SPAlertActionStyleDefault handler:^(SPAlertAction * _Nonnull action) {
-            if (defaultButtonHandler) {
-                defaultButtonHandler();
+- (void)alertWithConfig:(ZYQuickAlertConfig *)config {
+    if (!config) return ;
+    
+    if (!config.presentingViewController) return;
+    SPAlertController *alert = [SPAlertController alertControllerWithTitle:config.title message:config.message preferredStyle:config.style];
+    __weak typeof(config) weakConfig = config;
+    for (int i = 0; i < config.actions.count; i++) {
+        ZYQuickAlertAction *zyAction = config.actions[i];
+        [alert addAction:[SPAlertAction actionWithTitle:zyAction.title style:zyAction.style handler:^(SPAlertAction * _Nonnull action) {
+            if (zyAction.block) {
+                zyAction.block(weakConfig);
             }
         }]];
     }
+    if (config.messageTextAlignment) alert.textAlignment = config.messageTextAlignment;
+    if (config.titleAttributedString) alert.attributedTitle = config.titleAttributedString;
+    if (config.messageAttributedString) alert.attributedMessage = config.messageAttributedString;
+    alert.titleFont = config.titleFont ? config.titleFont : alert.titleFont;
+    alert.titleColor = config.titleColor ? config.titleColor : alert.titleColor;
+    alert.messageFont = config.messageFont ? config.messageFont : alert.messageFont;
+    alert.messageColor = config.messageColor ? config.messageColor : alert.messageColor;
+    if (config.minDistanceToEdges > 0) alert.minDistanceToEdges = config.minDistanceToEdges;
     
-    if (cancelButtonTitle.length > 0) {
-        [alert addAction:[SPAlertAction actionWithTitle:cancelButtonTitle style:SPAlertActionStyleDefault handler:^(SPAlertAction * _Nonnull action) {
-            if (cancelButtonHandler) {
-                cancelButtonHandler();
-            }
-        }]];
+    for (int i = 0; i < config.textFieldBlocks.count; i++) {
+        [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            [config.textFields addObject:textField];
+            config.textFieldBlocks[i](textField);
+        }];
     }
     
-    if (destructiveButtonTitle.length > 0) {
-        [alert addAction:[SPAlertAction actionWithTitle:destructiveButtonTitle style:SPAlertActionStyleDestructive handler:^(SPAlertAction * _Nonnull action) {
-            if (destructiveButtonHandler) {
-                destructiveButtonHandler();
-            }
-        }]];
-    }
-    
-    if (presentingViewController) {
-        [presentingViewController presentViewController:alert animated:YES completion:nil];
+    if (config.presentingViewController) {
+        [config.presentingViewController presentViewController:alert animated:YES completion:nil];
     }else {
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
-    }
-}
-
-- (void)alertControllerWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message actionTitles:(NSArray * _Nonnull)actionTitles styles:(NSArray <NSNumber *>* _Nonnull)styles handler:(void (^ __nullable)(int index))handler presentingViewController:(UIViewController * _Nullable)presentingViewController preferredStyle:(UIAlertControllerStyle)preferredStyle {
-    if (!message) return;
-    SPAlertController *alert = [SPAlertController alertControllerWithTitle:title message:message preferredStyle:SPAlertControllerStyleAlert];
-    for (int i = 0; i < actionTitles.count; i++) {
-        SPAlertActionStyle style = SPAlertActionStyleDefault;
-        if (i < styles.count) {
-            style = [styles[i] intValue];
-        }
-        [alert addAction:[SPAlertAction actionWithTitle:actionTitles[i] style:style handler:^(SPAlertAction * _Nonnull action) {
-            if (handler) {
-                handler(i);
-            }
-        }]];
-    }
-    
-    if (presentingViewController) {
-        [presentingViewController presentViewController:alert animated:YES completion:nil];
-    }else {
-        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
+//        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
 }
 
@@ -118,30 +124,10 @@ pod 'ZYQuickAlertController'
 ## 更多
 ```objc
 @interface UIViewController (ZYQuickAlertController)
-
-//AlertWithTitle
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message actionTitles:(NSArray * _Nonnull)actionTitles styles:(NSArray <NSNumber *>* _Nonnull)styles handler:(void (^ __nullable)(int index))handler;
-
-//AlertWithMessage 默认title为"提示"
-- (void)alertWithMessage:(NSString * _Nullable)message cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message defaultButtonTitle:(NSString * _Nullable)defaultButtonTitle defaultButtonHandler:(void (^ __nullable)(void))defaultButtonHandler destructiveButtonTitle:(NSString * _Nullable)destructiveButtonTitle destructiveButtonHandler:(void (^ __nullable)(void))destructiveButtonHandler cancelButtonTitle:(NSString * _Nullable)cancelButtonTitle cancelButtonHandler:(void (^ __nullable)(void))cancelButtonHandler;
-- (void)alertWithMessage:(NSString * _Nullable)message actionTitles:(NSArray * _Nonnull)actionTitles styles:(NSArray <NSNumber *>* _Nonnull)styles handler:(void (^ __nullable)(int index))handler;
-
-//ActionSheet
-- (void)actionSheetWithTitle:(NSString * _Nullable)title message:(NSString * _Nullable)message actionTitles:(NSArray * _Nonnull)actionTitles styles:(NSArray <NSNumber *>* _Nonnull)styles handler:(void (^ __nullable)(int index))handler;
+- (ZYQuickAlertConfig *)zyAlert; ///<原生弹框
+- (ZYQuickAlertConfig *)zyAlertCustom;///<自定义弹框
++ (ZYQuickAlertConfig *)zyAlert; ///<原生弹框
++ (ZYQuickAlertConfig *)zyAlertCustom;///<自定义弹框
 @end
+
 ```
