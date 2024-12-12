@@ -1,7 +1,7 @@
 # ZYQuickAlertController
 
 ## 介绍
-快速调用系统弹框，或者调用自定义的弹框
+快速调用系统弹框，或者调用自定义的弹框, 链式调用。
 
 ## 如何导入
 ```
@@ -19,10 +19,7 @@ pod 'ZYQuickAlertController'
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self test];
-    });
-    
+    [self test];
 }
 
 - (void)test {
@@ -60,13 +57,6 @@ pod 'ZYQuickAlertController'
     }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config){
         NSLog(@"点击了取消按钮");
     }).alert();
-    
-    //如果需要在UIView中调用弹框，也可以直接调用ZYQuickAlertController
-    [ZYQuickAlertController alertWithConfig:ZYQuickAlertConfig.new.sTitle(@"提示").sMessage(@"我是弹框1").addDefaultAction(@"确定按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
-        NSLog(@"点击了确定按钮");
-    }).addCancelAction(@"取消按钮", ^(ZYQuickAlertConfig * _Nonnull config) {
-        NSLog(@"点击了取消按钮");
-    }).sPresentingViewController(self)];
 }
 
 @end
